@@ -2,6 +2,7 @@ from TaskManager import app, db
 from flask import Flask, render_template, request, redirect
 from TaskManager.models import Todo
 from datetime import datetime
+from TaskManager.forms import RegisterForm
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -48,3 +49,9 @@ def update(id):
             return 'There was an issue updating your task'
     else:
         return render_template('update.html', task=task)
+
+@app.route('/register')
+def register_page():
+    form = RegisterForm()
+    return render_template('register.html', form=form)
+

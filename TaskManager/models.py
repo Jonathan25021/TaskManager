@@ -13,6 +13,7 @@ class Todo(db.Model):
     content = db.Column(db.String(200), nullable=False)
     completed = db.Column(db.Integer, default=0)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
 
     def __repr__(self):
         return '<Task %r>' % self.id
